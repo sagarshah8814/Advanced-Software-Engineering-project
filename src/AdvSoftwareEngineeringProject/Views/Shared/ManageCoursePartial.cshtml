@@ -1,0 +1,18 @@
+﻿<!--Shows Manage Course button on navbar only when signed in user has a role of instructor
+    and My Course button when signed in user is student-->
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@inject SignInManager<Student> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    if (User.IsInRole("Instructor"))
+    {
+        <li><a asp-controller="ManageClass" asp-action="List">Manage Course</a></li>
+    }
+    else
+    {
+  <li><a asp-controller="RegisteredSummary" asp-action="List">My Course</a></li>
+    }
+}

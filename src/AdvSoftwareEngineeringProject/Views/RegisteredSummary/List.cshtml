@@ -1,0 +1,32 @@
+﻿@model RegisteredCoursesViewModel
+<!--View Page for listing courses registered by student with a drop course option-->
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <table class="table table-striped table-hover ">
+            <thead>
+            <tr>
+            
+                <th>Course Name</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            
+                @foreach (var s in Model.Courses)
+                {
+                    <tr>
+                        <form id="drop" asp-controller="RegisteredSummary" asp-action="Drop" method="post" onsubmit="return confirm('Do You Really Want To Drop The Course?');">
+                            <td><a asp-controller="ManageClass" asp-action="CourseContent" asp-route-courseId="@s.CourseId">@s.Name</a></td>
+                            <td>
+                               <input type="hidden" asp-for="CourseId" value="@s.CourseId"/>
+                                <input type="submit" class="btn btn-danger" value="Drop"/>
+                            </td>
+                      </form>
+                        
+                    </tr>
+                }
+   
+            </tbody>
+        </table>
+    </div>
+</div>

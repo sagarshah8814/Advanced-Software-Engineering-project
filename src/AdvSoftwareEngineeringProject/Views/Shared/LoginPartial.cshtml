@@ -1,0 +1,35 @@
+﻿<!--Partial view page for showing login and register option-->
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@inject SignInManager<Student> SignInManager
+
+<!--Shows Login and Register option when user is not signed in and shows logout 
+    option if user is signed in-->
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="nav navbar-right">
+        <li>
+            <div class="btn-group close">
+                <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i>@User.Identity.Name</a>
+                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="divider"></li>
+                    <li>
+                        <form asp-controller="Account" asp-action="LogOut" method="post"><input type="submit" class="btn btn-link" value="LogOut"/>
+                        </form></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-right">
+        <li><a asp-controller="Account" asp-action="Login" id="logInId">LogIn</a></li>
+        <li><a asp-controller="Account" asp-action="RegisterUser" id="registerUserId">Register</a></li>
+    </ul>
+}
+

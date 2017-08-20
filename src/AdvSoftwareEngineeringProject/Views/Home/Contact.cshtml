@@ -1,0 +1,33 @@
+﻿@model ContactViewModel
+<!--contact View Page for sending Email to admin-->
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h2 class="text-info">Contact Us:</h2>
+        <form asp-controller="Home" asp-action="Contact" method="post" class="form-horizontal" role="form">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            @if (ViewBag.UserMessage != null)
+            {
+                <div>@ViewBag.UserMessage</div>
+            }
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <textarea asp-for="Message" cols=" 40" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
+                <input type="submit" class="btn btn-success" value="Send" />
+            </div>
+        </form>
+    </div>
+</div>

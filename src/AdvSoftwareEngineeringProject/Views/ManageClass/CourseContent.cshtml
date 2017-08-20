@@ -1,0 +1,17 @@
+﻿@model ManageClassViewModel
+<!--View page for viewing assignments posted by instructor-->
+<div class="row">
+    <div class="col-md-3 col-md-offset-3">
+        <h2 class="text-info">Assignments</h2>
+        @foreach (var c in Model.Assignments)
+        {
+            <div class="well well-lg">@c.AssignmentData</div>
+            <div>
+                <span class="text-info">Date Added:@c.DateAdded</span>
+            </div>
+            <div>
+                <span class="text-danger">Due Date:@c.DueDate</span>
+            </div>
+        }
+    </div>
+    </div>

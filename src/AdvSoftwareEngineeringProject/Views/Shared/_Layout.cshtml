@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<!--A layout view page that gets called in every view page-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Student Course Management System</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="~/Content/site.css" rel="stylesheet"/>
+    <link href="~/lib/bootswatch/paper/bootstrap.css" rel="stylesheet"/>
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="wrapper" class="container-fluid">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="jumbotron-fluid">
+            <div class="navbar-brand">ASE Project</div>
+            <ul class="nav navbar-left">
+                <li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="RegisterCourse" asp-action="Index">Register Course</a></li>
+                @await Html.PartialAsync("ManageCoursePartial")
+                <li><a asp-controller="Home" asp-action="About">About</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Contact Us</a></li>
+            </ul>
+            @await Html.PartialAsync("LoginPartial")
+        </div>
+    </nav>
+</div>
+
+<div id="RenderedBody">
+    @RenderBody()
+</div>
+
+<div id="footer" class="container-fluid fixed-bottom">
+    <footer id="footer" class="container-fluid text-center">
+        <div style="margin-top: 25px;">
+            <p class="text-info">
+                <strong>Sagar Shah© 2017, All Rights Reserved</strong>
+                <br>
+                <span class="text-info">Advanced Software Engineering Project</span>
+            </p>
+        </div>
+    </footer>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/js/site.js"></script>
+</body>
+</html>
